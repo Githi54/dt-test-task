@@ -16,16 +16,15 @@ flowchart LR
     %% === API Service ===
     subgraph API[API Service]
         C[API Gateway]
-        D[Auth + REST API (Nest.js)]
+        D[Auth + REST API: Nest.js]
         E[(RabbitMQ Producer)]
     end
 
     %% === Worker Service ===
     subgraph WORKER[Worker Service]
-        F[(RabbitMQ Consumer)]
+        F[RabbitMQ Consumer]
         G[Processing Logic]
-        H[(Google Spanner)]
-        I[(Elasticsearch)]
+        H[Google Spanner]
         J[Alert Service]
     end
 
