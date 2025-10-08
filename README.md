@@ -43,7 +43,6 @@ flowchart LR
     %% === Data Flows ===
     A --> B --> C --> D --> E
     E --> F --> G --> H
-    G --> I
     G --> J
     K --> D
     J --> K
