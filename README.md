@@ -10,7 +10,7 @@ flowchart LR
     %% === Client Side ===
     subgraph CLIENT[Client Side]
         A[Client Application]
-        B[Client SDK]
+        B[Client SDK: sharred package]
     end
 
     %% === API Service ===
@@ -59,6 +59,6 @@ flowchart LR
 | Message Queue      | Decouples ingestion from processing               | RabbitMQ                                  | —             |
 | Worker Service     | Consumes jobs, processes logs, stores to DB       | Node.js Worker + BullMQ / amqplib       | TypeScript    |
 | Primary Database   | Scalable structured storage for logs and metadata | Google Cloud Spanner                     | SQL (Spanner Dialect) |
-| Alert Service      | Triggers alerts based on severity                 | Node.js microservice + Email / Slack    | TypeScript    |
+| Alert Service      | Triggers alerts based on severity                 | Node.js microservice + Email / Slack SDK    | TypeScript    |
 | Web Dashboard      | User interface for viewing, filtering, and analyzing logs | Next.js + React + TailwindCSS          | TypeScript    |
 | DevOps / Monitoring| CI/CD, deployment, and observability             | GitHub Actions, Kubernetes, Prometheus, Grafana | —        |
