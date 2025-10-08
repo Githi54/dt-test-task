@@ -17,12 +17,12 @@ flowchart LR
     subgraph API[API Service]
         C[API Gateway]
         D[Auth + REST API: Nest.js]
-        E[(RabbitMQ Producer)]
+        E[(RabbitMQ Producer: Crons)]
     end
 
     %% === Worker Service ===
     subgraph WORKER[Worker Service]
-        F[RabbitMQ Consumer]
+        F[RabbitMQ Consumer: Jobs]
         G[Processing Logic]
         H[Google Spanner]
         J[Alert Service]
@@ -48,3 +48,17 @@ flowchart LR
     J --> K
     G --> L
 ```
+
+## 🛠️ Technology Stack
+
+| Component          | Purpose                                             | Technology / Tool                        | Language       |
+|-------------------|----------------------------------------------------|-----------------------------------------|---------------|
+| Client SDK         | Collect and send error logs from applications     | TypeScript SDK (npm package)             | TypeScript    |
+| API Gateway        | Entry point for incoming SDK and Dashboard requests | Nginx / Cloud Load Balancer             | —             |
+| API Service        | Handles authentication, REST API, and message publishing | Nest.js + Express + RabbitMQ producer | TypeScript    |
+| Message Queue      | Decouples ingestion from processing               | RabbitMQ                                  | —             |
+| Worker Service     | Consumes jobs, processes logs, stores to DB       | Node.js Worker + BullMQ / amqplib       | TypeScript    |
+| Primary Database   | Scalable structured storage for logs and metadata | Google Cloud Spanner                     | SQL (Spanner Dialect) |
+| Alert Service      | Triggers alerts based on severity                 | Node.js microservice + Email / Slack    | TypeScript    |
+| Web Dashboard      | User interface for viewing, filtering, and analyzing logs | Next.js + React + TailwindCSS          | TypeScript    |
+| DevOps / Monitoring| CI/CD, deployment, and observability             | GitHub Actions, Kubernetes, Prometheus, Grafana | —        |
