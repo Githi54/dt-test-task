@@ -2,9 +2,7 @@
 
 ### 🏗️ System Architecture (Mermaid)
 
-```mermaid
-graph TD
-
+```mermaid graph TD
 A[Client Application] --> B[Client SDK]
 B -->|HTTP/gRPC| C[API Gateway]
 C --> D[Ingestion Service]
