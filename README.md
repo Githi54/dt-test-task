@@ -1,8 +1,9 @@
 # Middle Full-Stack engineer test assessment - Description of the BE + FE Application Architecture
 
-## Task overview
-
-You need to prepare a document describing how you would design an error logging service from scratch. Explain which technologies you would choose for the client library (SDK), backend API, database, web dashboard, and DevOps solution, and justify why these choices are optimal. Additionally, compile a list of questions you would ask the client to better understand the project requirements and expectations.
+## 📑 Task Overview
+This document describes a proposed architecture for an error logging service.  
+The service includes a **Client SDK**, **Backend API**, **Worker Service**, **Web Dashboard**, **Alerting**, and **DevOps solution**.  
+It is designed to handle high volumes of error logs with scalable processing, reliable storage, and real-time notifications.
 
 ### 🏗️ System Architecture
 ```mermaid
