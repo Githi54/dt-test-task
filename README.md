@@ -5,21 +5,21 @@
 ```mermaid
 graph TD
     A[Client Application] --> B[Client SDK]
-    B -->|HTTP/gRPC| C[API Gateway]
+    B -->|HTTP or gRPC| C[API Gateway]
     C --> D[Ingestion Service]
-    D --> E[Message Queue (Kafka/Kinesis)]
+    D --> E[Message Queue: Kafka or Kinesis]
     E --> F[Processing Workers]
-    F --> G1[(Hot Storage: Elasticsearch)]
-    F --> G2[(Primary DB: Cassandra / DynamoDB)]
-    F --> G3[(Cold Storage: S3 / GCS)]
+    F --> G1[Hot Storage: Elasticsearch]
+    F --> G2[Primary DB: Cassandra or DynamoDB]
+    F --> G3[Cold Storage: S3 or GCS]
     G1 --> H[Backend API]
-    H --> I[Web Dashboard (React/Next.js)]
+    H --> I[Web Dashboard: React/Next.js]
     F --> J[Alert Service]
-    J --> K[Email/Slack/Webhook]
+    J --> K[Email, Slack, or Webhook Alerts]
     subgraph DevOps
-        L[Monitoring: Prometheus/Grafana]
+        L[Monitoring: Prometheus and Grafana]
         M[CI/CD: GitHub Actions]
-        N[Deployment: Kubernetes / ECS]
+        N[Deployment: Kubernetes or ECS]
     end
     F --> L
-
+```
